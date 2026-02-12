@@ -1,0 +1,14 @@
+{
+  "name": "frontend-ong",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 5174 --host"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0",
+    "tailwindcss": "latest",
+    "postcss": "latest",
+    "autoprefixer": "latest"
+  }
+}
+
