@@ -9,6 +9,20 @@
     "tailwindcss": "latest",
     "postcss": "latest",
     "autoprefixer": "latest"
-  }
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Instituto-educar-aparecida/Frontend-e-estilistica..git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Instituto-educar-aparecida/Frontend-e-estilistica./issues"
+  },
+  "homepage": "https://github.com/Instituto-educar-aparecida/Frontend-e-estilistica.#readme",
+  "description": ""
 }
-
