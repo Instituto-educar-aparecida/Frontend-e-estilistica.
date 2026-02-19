@@ -5,17 +5,24 @@
     "dev": "vite --port 5174 --host"
   },
   "devDependencies": {
-    "vite": "^5.0.0",
-    "tailwindcss": "latest",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.4",
+    "autoprefixer": "latest",
     "postcss": "latest",
-    "autoprefixer": "latest"
+    "tailwindcss": "latest",
+    "vite": "^5.0.0"
   },
   "version": "1.0.0",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-icons": "^5.5.0"
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Instituto-educar-aparecida/Frontend-e-estilistica..git"
+    "url": "git+https://github.com/Instituto-educar-aparecida/Frontend-e-estilistica.git"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +30,6 @@
   "bugs": {
     "url": "https://github.com/Instituto-educar-aparecida/Frontend-e-estilistica./issues"
   },
-  "homepage": "https://github.com/Instituto-educar-aparecida/Frontend-e-estilistica.#readme",
+  "homepage": "https://github.com/Instituto-educar-aparecida/Frontend-e-estilistica#readme",
   "description": ""
 }
