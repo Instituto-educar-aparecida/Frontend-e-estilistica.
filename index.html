@@ -472,16 +472,107 @@
             };
         }
 
-        function handleLogin(event) {
+        function decodeJwtPayload(token) {
+            try {
+                const payloadBase64 = token.split('.')[1];
+                const base64 = payloadBase64.replace(/-/g, '+').replace(/_/g, '/');
+                const jsonPayload = decodeURIComponent(escape(window.atob(base64)));
+                return JSON.parse(jsonPayload);
+            } catch (err) {
+                console.error('decodeJwtPayload error', err);
+                return null;
+            }
+        }
+
+        async function handleLogin(event) {
             event.preventDefault();
-            
-            if (!validateAccountSelection()) {
-                return;
+
+            if (!validateAccountSelection()) return;
+
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            if (!username || !password) { alert('Preencha usuário e senha.'); return; }
+
+            const accountType = state.selectedAccount;
+            let email = username;
+            if (!username.includes('@')) {
+                if (accountType === 'admin') email = 'admin@educar.com';
+                else if (accountType === 'user') email = 'aluno@educar.com';
+                else if (accountType === 'guest') { alert('Selecione Usuário ou Administrador.'); return; }
+                else { alert('Tipo de conta inválido.'); return; }
             }
 
-            const formData = getFormData();
-            console.log('Login attempt:', formData);
-            alert(`Login como ${formData.accountType}:\nUsuário: ${formData.username}`);
+            const payload = { email, senha: password };
+
+            const submitBtn = document.querySelector('#loginForm button[type="submit"]');
+            if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Entrando...'; }
+
+            try {
+                const res = await fetch('http://localhost:5173/api/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!res.ok) {
+                    const err = await res.json().catch(()=>({message:`Erro ${res.status}`}));
+                    alert(err.message || "Login falhou");
+                    return;
+                }
+
+                const body = await res.json();
+                const token = body.msg || body.token;
+                if (!token) {
+                    alert('Token ausente.');
+                    return;
+                }
+
+                const claims = decodeJwtPayload(token);
+
+                const userFromClaims = {
+                    email: claims?.email ?? email,
+                    role: (claims?.role ?? claims?.cargo ?? null),
+                    name: claims?.nome ?? null
+                };
+
+                const mapping = {
+                    admin: ['admin', 'administrator'],
+                    user: ['estudante', 'aluno', 'user'],
+                    guest: ['guest', 'visitante']
+                };
+
+                const selected = accountType;
+                const roleLower = (userFromClaims.role || '').toString().toLowerCase();
+
+                if (!roleLower) {
+                    alert('Cargo ausente no token.');
+                    return;
+                }
+
+                if (!mapping[selected] || !mapping[selected].includes(roleLower)) {
+                    alert('Tipo de conta selecionado não corresponde às credenciais informadas.');
+                    return;
+                }
+
+                localStorage.setItem('edu_token', token);
+                localStorage.setItem('edu_user', JSON.stringify(userFromClaims));
+
+                const role = roleLower;
+                if (role === 'estudante' || role === 'aluno' || role === 'user') {
+                    window.location.replace(`${window.location.origin}/aluno.html`);
+                } else if (role === 'admin' || role === 'administrator') {
+                    window.location.replace(`${window.location.origin}/admin.html`);
+                } else {
+                    alert('Cargo desconhecido: ' + userFromClaims.role);
+                    window.location.replace(`${window.location.origin}/`);
+                }
+
+            } catch (error) {
+                console.error('Erro ao chamar backend:', error);
+                alert('Não foi possível conectar ao backend.');
+            } finally {
+                if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Entrar no Sistema'; }
+            }
         }
 
         function initializeAccountSelection() {
