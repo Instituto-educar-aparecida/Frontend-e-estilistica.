@@ -5,10 +5,16 @@
     "outDir": "./dist",
 
     "module": "esnext",
-    "target": "es2022",
+    "moduleResolution": "bundler",
+    "target": "es2020",
     "lib": ["DOM", "DOM.Iterable", "ES6"],
     "types": [],
 
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "resolveJsonModule": true,
     // Other Outputs
     "sourceMap": true,
     "declaration": true,
@@ -27,5 +33,6 @@
     "skipLibCheck": true
   },
 
-  "include": ["src/**/*", "types/**/*"]
+  "include": ["src/**/*", "types/**/*"],
+  "exclude": ["node_modules", "dist"]
 }
