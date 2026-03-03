@@ -10,7 +10,7 @@ export function Sidebar() {
   return (
     <aside className="w-60 max-w-60 bg-[#1E293B] text-white h-screen border-r flex flex-col ">
       <header className="flex flex-row items-center gap-2 pl-8 pt-6 pb-5">
-        <div className="bg-gradient-to-br from-violet-500 to-violet-800 p-2 rounded-lg  shadow-lg shadow-violet-600/50">
+        <div className="bg-linear-to-br from-violet-500 to-violet-800 p-2 rounded-lg  shadow-lg shadow-violet-400/50">
           <LuGraduationCap />
         </div>
         <div className="flex flex-col ">
@@ -26,17 +26,17 @@ export function Sidebar() {
       <div className="flex justify-between flex-1 flex-col ">
         <nav className="pt-8">
           <ul className="space-y-4 pl-8">
-            <li className="flex gap-2 items-center py-2 border-l-2 border-transparent hover:bg-violet-600  cursor-pointer rounded-l-lg transition-all">
+            <li className="flex gap-2 items-center py-2 border-l-2 border-transparent hover:bg-violet-400/20 hover:border-violet-400  cursor-pointer rounded-l-lg transition-all">
               <span className="flex flex-row items-center pl-2  gap-2">
                 <LuHouse /> Início
               </span>
             </li>
-            <li className="flex gap-2 items-center py-2 border-l-2 border-transparent hover:bg-violet-600 hover:border-violet-600 cursor-pointer rounded-l-lg transition-all">
+            <li className="flex gap-2 items-center py-2 border-l-2 border-transparent hover:bg-violet-400/20 hover:border-violet-400 cursor-pointer rounded-l-lg transition-all">
               <span className="flex flex-row items-center  pl-2 gap-2">
                 <LuCirclePlay /> Minhas Aulas
               </span>
             </li>
-            <li className="flex gap-2 items-center py-2 border-l-2 border-transparent hover:bg-violet-600 hover:border-violet-600 cursor-pointer rounded-l-lg transition-all">
+            <li className="flex gap-2 items-center py-2 border-l-2 border-transparent hover:bg-violet-400/20 hover:border-violet-400 cursor-pointer rounded-l-lg transition-all">
               <span className="flex flex-row items-center pl-2 gap-2">
                 <LuUserRound />
                 Minha conta

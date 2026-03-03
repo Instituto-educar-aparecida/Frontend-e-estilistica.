@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@import "@fontsource/inter/300.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/inter/700.css";
+
+@theme {
+  --color-*: initial;
+  --font-*: initial;
+
+  --color-violet-800: #581c87;
+  --color-violet-500: #7e22ce;
+  --color-violet-400: #9333ea;
+  --color-violet-300: #a855f7;
+  --color-violet-200: #d8b4fe;
+
+  --color-white: #ffffff;
+  --color-black: #0f1115;
+
+  --color-gray-100: #f8fafc;
+  --color-gray-200: #e2e8f0;
+  --color--gray-300: #94a3b8;
+  --color-gray-400: #64748b;
+  --color-gray-700: #475569;
+
+  --color-primary: #0f172a;
+  --color-secondary: #1e293b;
+
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+
+  --font-sans: "InterVariable", sans-serif;
+
+  --text-display: 3rem; /* 48px */
+  --text-heading: 1.875rem; /* 30px */
+  --text-body: 1rem; /* 16px */
+  --text-caption: 0.75rem; /* 12px */
+}
+
+@layer base {
+  body {
+    @apply font-sans antialiased;
+  }
+}
+
+@layer components {
+  .heading-display {
+    @apply text-(--text-display) font-bold tracking-tight;
+  }
+  .heading {
+    @apply text-(--text-heading) font-semibold;
+  }
+  .body {
+    @apply text-(--text-body) font-normal;
+  }
+  .caption {
+    @apply text-(--text-caption) font-medium;
+  }
+}

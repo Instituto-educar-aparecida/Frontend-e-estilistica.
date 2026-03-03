@@ -1,5 +1,7 @@
-import { Sidebar } from "./components/sidebar";
-
 export default function App() {
-  return <Sidebar />;
+  return (
+    <>
+      <h1>Aquivo principal do app </h1>
+    </>
+  );
 }
