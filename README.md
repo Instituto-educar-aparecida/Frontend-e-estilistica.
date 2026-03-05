@@ -12,8 +12,9 @@ Você precisa apenas do **Docker** instalado:
 
 1. Clone o repositório: `git clone [URL]`
 2. Entre na pasta: `cd [NOME-DA-PASTA]`
-3. Suba o ambiente: `docker compose up --build`
-4. Para instalar pacotes: `docker-compose exec frontend npm install "o pacote desejado"`
+3. Instale as dependencias: `npm install`
+4. Suba o ambiente: `docker compose up --build`
+5. Para instalar pacotes: `docker-compose exec frontend npm install "o pacote desejado"`
 
 ## 🌐 Portas do Projeto
 
