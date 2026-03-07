@@ -1,7 +1,9 @@
+import { RegisterForm } from "./feature/auth/components/RegisterForm";
+
 export default function App() {
   return (
     <>
-      <h1>Aquivo principal do app </h1>
+      <RegisterForm />
     </>
   );
 }
