@@ -1,9 +1,33 @@
 import * as z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
-export const loginSchema = z.object({});
+export const loginSchema = z.object({
+  email: z.email("Email inválido ou não encontrado"),
+  senha: z.string().min(2, "Senha deve ter no mínimo 8 caracteres"),
+});
 
-export type LoginSchema = z.infer<typeof loginSchema>;
+export type LoginFormData = z.infer<typeof loginSchema>;
+export const loginResolver = zodResolver(loginSchema);
+export const loginDefaultValues: LoginFormData = {
+  email: "",
+  senha: "",
+};
 
-export const RegisterSchema = z.object({});
+export const RegisterSchema = z.object({
+  name: z
+    .string()
+    .min(1, "Nome é obrigatório")
+    .max(45, "Nome deve ter no máximo 45 caracteres"),
+  email: z.email("Email inválido"),
+  senha: z.string().min(8, "Senha deve ter no mínimo 8 caracteres"),
+  role: z.enum(["admin", "aluno"]),
+});
 
-export type RegisterSchema = z.infer<typeof RegisterSchema>;
+export type RegisterFormData = z.infer<typeof RegisterSchema>;
+export const resolver = zodResolver(RegisterSchema);
+export const registerDefaultValues: RegisterFormData = {
+  name: "",
+  email: "",
+  senha: "",
+  role: "aluno",
+};
