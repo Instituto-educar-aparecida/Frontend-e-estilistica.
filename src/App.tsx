@@ -1,9 +1,11 @@
-import { RegisterForm } from "./feature/auth/components/RegisterForm";
+import { BrowserRouter } from "react-router";
+import { LoginPage } from "./feature/auth/pages/login-page";
+import AppRoutes from "./routes";
 
 export default function App() {
   return (
-    <>
-      <RegisterForm />
-    </>
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
   );
 }
