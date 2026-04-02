@@ -1,4 +1,5 @@
 // components/RegisterForm.tsx (Somente Estilização)
+import { Link } from "react-router-dom"
 import React from "react";
 import {
   MdPerson,
@@ -97,12 +98,12 @@ export const RegisterForm = () => {
           <div className="mt-6 pt-6 border-t border-white/10 ">
             <p className="text-xs text-gray-400 text-center">
               Já tem conta?{" "}
-              <a
-                href="#"
-                className="text-violet-400 font-semibold hover:underline cursor-pointer"
+              <Link 
+                 to="/" 
+                 className="text-violet-400 font-semibold hover:underline cursor-pointer"
               >
-                Entrar
-              </a>
+                 Entrar
+            </Link>
             </p>
           </div>
         </div>
