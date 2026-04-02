@@ -2,11 +2,16 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 export const loginSchema = z.object({
-  email: z.email(),
-  password: z.string().min(8),
+  email: z.email("Email inválido ou não encontrado"),
+  senha: z.string().min(2, "Senha deve ter no mínimo 8 caracteres"),
 });
 
 export type LoginFormData = z.infer<typeof loginSchema>;
+export const loginResolver = zodResolver(loginSchema);
+export const loginDefaultValues: LoginFormData = {
+  email: "",
+  senha: "",
+};
 
 export const RegisterSchema = z.object({
   name: z
